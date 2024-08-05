@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE HTML>
 <html lang="en">
 	<head>
-		<title>Unemployment benefit</title>
+		<title>Lab 2.1 - 2.5</title>
 		<style>
 			@media screen{
 				h1{
@@ -28,10 +28,11 @@
 	<body>
         <div style="float: right">
             <?php
-                $day=strftime('%d');
+                $weekday=strftime('%A');
+                $day=strftime('%e');
                 $mon=strftime('%B');
                 $year=strftime('%Y');
-                echo "Today is Friday, the {$day}th of $mon, year $year";
+                echo "Today is $weekday, the {$day}th of $mon, year $year";
             ?>
         </div>
 		<header>
@@ -49,6 +50,28 @@
                     endif;
                 ?>
             </h1>
+
+            <h2><?php
+                $size = ini_get(post_max_size);
+                switch ($size):
+                    case preg_match("/K/", $size)==1:
+                        $size *= 1000;
+                        break;
+                    case preg_match("/M/", $size)==1:
+                        $size *= 1000000;
+                        break;
+                    case preg_match("/G/", $size)==1:
+                        $size *= 1e+9;
+                        break;
+                    case preg_match("/T/", $size)==1:
+                        $size *= 1e+12;
+                        break;
+                    default:
+                        $size = $size;
+                        break;
+                endswitch;
+                 echo "Maximal size of posted data: $size bytes";
+            ?><br></h2>
 		</header>
 		<nav>
 			<a href="article-1.html" target="content">Terms of use</a><br/>
@@ -67,19 +90,19 @@
 							name="login"
 						    type="email"
 						    placeholder="mail"
-						    value="im_gay@gmail.com"
+						    value="email@gmail.com"
 					/>
 					<br/>
 					<input name="password"
 						   type="text"
 						   placeholder="password"
-						   pattern="^I_am_gay$"
+						   pattern="^password2$"
 						   list="passwordlist"
 					/>
 					<datalist id="passwordlist">
-						<option value="I_am_gay"/>
-						<option value="I_am_straight"/>
-						<option value="Pride_month"/>
+						<option value="password1"/>
+						<option value="password2"/>
+						<option value="Password3"/>
 					</datalist>
 					<input style="margin-left: 10px"
 							name="send"
@@ -89,27 +112,27 @@
 					<br/>
 					<input name="checkbox"
 						   type="checkbox"
-						   id="gay_status"
-						   title="I`m gay"
+						   id="check_status"
+						   title=""
 						   checked
 					/>
-					<label for="gay_status">Status</label><br/><br/>
+					<label for="check_status">Status</label><br/><br/>
 				</fieldset>
 				<br/>
 				<fieldset style="width: 250px">
 					<legend>Allowance registration</legend>
-					<label for="gender_status">Gender</label><br/>
-					<select name="gender" id="gender_status" style="width: 155px">
-						<option>non-binary</option>
-						<option>queer</option>
-						<option>trans</option>
-						<option>gachimuchi</option>
+					<label for="multiple_status">Your status</label><br/>
+					<select name="multiple_choice" id="multiple_status" style="width: 155px">
+						<option>status_1</option>
+						<option>status_2</option>
+						<option>status_3</option>
+						<option>gstatus_4</option>
 						<option>other/additional</option>
 					</select>
 					<br/>
 					<textarea style="width: 150px"
 							name="other"
-							placeholder="other/additional e.g. BLM"
+							placeholder="other/additional"
 							rows="1"
 					></textarea>
 					<input style="margin-left: 20px"
@@ -119,17 +142,17 @@
 					/>
 					<div style="text-align: center">
 						<br/>
-						<label for="r2">Are you social justice activist?</label><br/>
+						<label for="r2">You are human?(captcha)</label><br/>
 						<input style="text-align: center"
 							   type="radio"
 							   name="r"
-							   value="1"
+							   value="true"
 							   id="r1"
 							   checked
 						>
 						<label for="r1">Yes</label>
 						<input type="radio"
-							   value="0"
+							   value="false"
 							   name="r"
 							   id="r2"
 						>
