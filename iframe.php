@@ -5,38 +5,53 @@
 		<style>
 			@media screen{
 				h1{
-                    position: relative;
-                    left: 150px;
 					text-align: center;
 				}
                 h2{
                     text-align: center;
                 }
 				body{
-					cursor: wait;
 					background-color: yellow;
 				}
 				form:first-child{
 					text-align: center;
 					margin: 20px auto;
 				}
-
+                iframe{
+                    border: 2px solid grey;
+                }
+                p{
+                    margin: 20px auto;
+                    width: 80%;
+                }
+                nav{
+                    position: absolute;
+                    bottom: 575px;
+                    float: left;
+                }
+                form{
+                    float: left;
+                    margin: 30px 100px 30px 50px;
+                }
 			}
 		</style>
-		<link type="text/css" rel="stylesheet" href="iframe.css" media="print">
 	</head>
 	<body>
-        <div style="float: right">
-            <?php
-                $weekday=strftime('%A');
-                $day=strftime('%e');
-                $mon=strftime('%B');
-                $year=strftime('%Y');
-                echo "Today is $weekday, the {$day}th of $mon, year $year";
-            ?>
+        <div style="height=200px">
+            <h3 style="text-align: right">
+                <!--Labs 2.1 - 2.3-->
+                <?php
+                    $weekday=strftime('%A');
+                    $day=strftime('%e');
+                    $mon=strftime('%B');
+                    $year=strftime('%Y');
+                    echo "Today is $weekday, the {$day}th of $mon, year $year";
+                ?>
+            </h3>
         </div>
 		<header>
             <h1>
+                <!--Lab 2.4-->
                 <?php
                     $hour = (int)strftime('%H');
                     if($hour < 5):
@@ -50,33 +65,34 @@
                     endif;
                 ?>
             </h1>
-
-            <h2><?php
-                $size = ini_get(post_max_size);
-                switch ($size):
-                    case preg_match("/K/", $size)==1:
-                        $size *= 1000;
-                        break;
-                    case preg_match("/M/", $size)==1:
-                        $size *= 1000000;
-                        break;
-                    case preg_match("/G/", $size)==1:
-                        $size *= 1e+9;
-                        break;
-                    case preg_match("/T/", $size)==1:
-                        $size *= 1e+12;
-                        break;
-                    default:
-                        $size = $size;
-                        break;
-                endswitch;
-                 echo "Maximal size of posted data: $size bytes";
-            ?><br></h2>
+            <h2>
+                <!--Lab 2.5-->
+                <?php
+                    $size = ini_get(post_max_size);
+                    switch ($size):
+                        case preg_match("/K/", $size)==1:
+                            $size *= 1000;
+                            break;
+                        case preg_match("/M/", $size)==1:
+                            $size *= 1000000;
+                            break;
+                        case preg_match("/G/", $size)==1:
+                            $size *= 1e+9;
+                            break;
+                        case preg_match("/T/", $size)==1:
+                            $size *= 1e+12;
+                            break;
+                        default:
+                            break;
+                    endswitch;
+                    echo "Maximal size of posted data: $size bytes";
+                ?>
+            <br></h2>
 		</header>
 		<nav>
-			<a href="article-1.html" target="content">Terms of use</a><br/>
-			<a href="article-2.html" target="content">Privacy policy</a><br/>
-			<a href="../4_1/php.html" target="content">Legal help</a>
+			<a href="info.php" target="content">info.php</a><br/><br/>
+			<a href="simple_web_page.html" target="content">Simple web page</a><br/><br/>
+			<a href="" target="content">Requiem</a><br/>
 		</nav>
 		<section>
 			<h2>About us</h2>
@@ -163,9 +179,8 @@
 			</form>
 			<iframe src="info.php"
 				name="content"
-				width="960px"
-				height="410"
-				style="border: none"
+				width="68%"
+				height="350px"
 			></iframe>
 		</section>
 	</body>

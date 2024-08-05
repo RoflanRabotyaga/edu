@@ -1,6 +1,7 @@
 *{margin: 5px; padding: 0; box-sizing: border-box;}
 body{
     background-color: grey;
+    height: auto;
 }
 h1{
     text-align: center;
@@ -59,18 +60,18 @@ article{
     float: left;
 }
 nav{
-    background-color: lime;
+    background-color: yellowe;
     height: 500px;
     width: 190px;
     float: left;
     margin: 0;
 }
 footer{
-    background-color: #FFF;
+    background-color: yellow;
     height: 80px;
     width: 1300px;
     clear: both;
-    margin: 500px auto;
+    margin: 20px auto;
 }
 #footer_p{
     position: relative;
