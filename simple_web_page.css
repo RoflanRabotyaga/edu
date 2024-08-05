@@ -54,24 +54,28 @@ section{
 }
 article{
     background-color: #FFF;
-    height: 500px;
+    height: auto;
     width: 1100px;
     margin: 0 10PX 10px 0;
     float: left;
 }
 nav{
     background-color: yellow;
-    height: 500px;
+    height: 400px;
     width: 190px;
     float: left;
     margin: 0;
 }
 footer{
-    background-color: yellow;
-    height: 80px;
     width: 1300px;
     clear: both;
-    margin: 20px auto;
+    margin: 20px auto
+}
+footer div{
+    background-color: #FFF;
+    width: 1100px;
+    height: 80px;
+    margin: 0;
 }
 #footer_p{
     position: relative;

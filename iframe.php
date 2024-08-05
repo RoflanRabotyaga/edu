@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE HTML>
 <html lang="en">
 	<head>
-		<title>Lab 2.1 - 2.5</title>
+		<title>Lab 2.1 - 2.6</title>
 		<style>
 			@media screen{
 				h1{
@@ -26,12 +26,15 @@
                 }
                 nav{
                     position: absolute;
-                    bottom: 575px;
+                    bottom: 75%;
                     float: left;
                 }
                 form{
                     float: left;
                     margin: 30px 100px 30px 50px;
+                }
+                span{
+                    color: green;
                 }
 			}
 		</style>
@@ -39,6 +42,7 @@
 	<body>
         <div style="height=200px">
             <h3 style="text-align: right">
+                <span>Lab2.1-2.3: </span>
                 <!--Labs 2.1 - 2.3-->
                 <?php
                     $weekday=strftime('%A');
@@ -51,6 +55,7 @@
         </div>
 		<header>
             <h1>
+                <span>Lab2.4: </span>
                 <!--Lab 2.4-->
                 <?php
                     $hour = (int)strftime('%H');
@@ -66,6 +71,7 @@
                 ?>
             </h1>
             <h2>
+                <span>Lab2.5: </span>
                 <!--Lab 2.5-->
                 <?php
                     $size = ini_get(post_max_size);
@@ -90,9 +96,18 @@
             <br></h2>
 		</header>
 		<nav>
-			<a href="info.php" target="content">info.php</a><br/><br/>
-			<a href="simple_web_page.html" target="content">Simple web page</a><br/><br/>
-			<a href="" target="content">Requiem</a><br/>
+            <span>Lab2.6: <br/></span><br/>
+            <!-- Lab 2.6 -->
+            <?php
+                $leftMenu = [
+                    ['link'=>'php configuration info', 'href'=>'info.php'],
+                    ['link'=>'Our project', 'href'=>'simple_web_page.php'],
+                    ['link'=>'Requiem', 'href'=>''],
+                ];
+            ?>
+			<a href="<?= $leftMenu[0]['href']?>" target="content"><?= $leftMenu[0]['link']?></a><br/><br/>
+			<a href="<?= $leftMenu[1]['href']?>" target="content"><?= $leftMenu[1]['link']?></a><br/><br/>
+			<a href="<?= $leftMenu[2]['href']?>" target="content"><?= $leftMenu[2]['link']?></a><br/>
 		</nav>
 		<section>
 			<h2>About us</h2>
@@ -142,7 +157,7 @@
 						<option>status_1</option>
 						<option>status_2</option>
 						<option>status_3</option>
-						<option>gstatus_4</option>
+						<option>status_4</option>
 						<option>other/additional</option>
 					</select>
 					<br/>
