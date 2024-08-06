@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lab 3.1 - 3.4</title>
-    <link rel="stylesheet" href="simple_web_page.css">
+    <link rel="stylesheet" href="php_labs_den2.css">
 </head>
 <body>
     <header>
@@ -37,11 +37,41 @@
                 ?>
             </p>
             <h2>Lab_3.2</h2>
-            <p></p>
+            <form action="" method="get">
+                <input type="text" name="var" id="val1"><br/>
+            </form>
+            <p>
+                <?php
+                    $var = htmlentities($_GET['var']);
+                    $i=0;
+                    $len = strlen($var);
+                    while($i < $len)
+                        echo $var[$i++]."<br>";
+                ?>
+            </p>
             <h2>Lab_3.3</h2>
-            <p></p>
+            <p>
+                <?php
+                    $rows=32;
+                    $cols=32;
+                    echo "<table>";
+                    for($tr=1; $tr<=$rows; $tr++):
+                        echo "<tr>";
+                            for($td=1; $td<=$cols; $td++):
+                                if($tr==1 || $td==1)
+                                    echo "<td><strong>" . $tr*$td . "</strong></td>";
+                                else
+                                    echo "<td>" . $tr*$td . "</td>";
+                            endfor;
+                        echo "</tr>";
+                    endfor;
+                    echo "</table>";
+                ?>
+            </p>
             <h2>Lab_3.4</h2>
-            <p></p>
+            <p>
+
+            </p>
         </article>
         <nav>
             <h1>Related</h1>

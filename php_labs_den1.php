@@ -35,6 +35,7 @@
                 }
                 span{
                     color: green;
+                    font-weight: bold;
                 }
 			}
 		</style>
@@ -101,7 +102,7 @@
             <?php
                 $leftMenu = [
                     ['link'=>'php configuration info', 'href'=>'info.php'],
-                    ['link'=>'Our project', 'href'=>'simple_web_page.php'],
+                    ['link'=>'Our project', 'href'=>'php_labs_den2.php'],
                     ['link'=>'Requiem', 'href'=>''],
                 ];
             ?>
@@ -147,7 +148,7 @@
 						   title=""
 						   checked
 					/>
-					<label for="check_status">Status</label><br/><br/>
+					<label for="check_status">Remember me</label><br/><br/>
 				</fieldset>
 				<br/>
 				<fieldset style="width: 250px">
@@ -181,13 +182,13 @@
 							   id="r1"
 							   checked
 						>
-						<label for="r1">Yes</label>
+						<label for="r1">No</label>
 						<input type="radio"
 							   value="false"
 							   name="r"
 							   id="r2"
 						>
-						<label for="r2">No</label><br/>
+						<label for="r2">Yes</label><br/>
 						<br/>
 					</div>
 				</fieldset>

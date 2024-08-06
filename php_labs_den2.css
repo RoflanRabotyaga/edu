@@ -81,3 +81,14 @@ footer div{
     position: relative;
     top: 30px;
 }
+tr, td{
+    text-align: center;
+    height: 30px;
+    width: 30px;
+}
+table, td{
+    border-collapse: separate;
+    border: 1px solid #999;
+    margin: 0 auto;
+    background: yellow;
+}
