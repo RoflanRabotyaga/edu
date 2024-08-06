@@ -1,8 +1,25 @@
+<!-- Lab 4.1 -->
+<?php
+function drawTable($cols="10", $rows="10", $color="white"){
+    echo "<table style='background-color: $color'>";
+    for($tr=1; $tr<=$rows; $tr++):
+        echo "<tr>";
+        for($td=1; $td<=$cols; $td++):
+            if($tr==1 || $td==1)
+                echo "<td><strong>" . $tr*$td . "</strong></td>";
+            else
+                echo "<td>" . $tr*$td . "</td>";
+        endfor;
+        echo "</tr>";
+    endfor;
+    echo "</table>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lab 3.1 - 3.4</title>
+    <title>Lab 3.1 - 4.2</title>
     <link rel="stylesheet" href="php_labs_den2.css">
 </head>
 <body>
@@ -27,7 +44,7 @@
     </header>
     <section>
         <article>
-            <h1>Labs</h1>
+            <h1>Labs Module 3</h1>
             <h2>Lab_3.1</h2>
             <p>
                 <?php
@@ -43,6 +60,8 @@
             <p>
                 <?php
                     $var = htmlentities($_GET['var']);
+                    if(strlen($var)==0)
+                        $var="Type some text above";
                     $i=0;
                     $len = strlen($var);
                     while($i < $len)
@@ -50,27 +69,34 @@
                 ?>
             </p>
             <h2>Lab_3.3</h2>
+            <div>
+                <?php
+                    drawTable(32, 32, yellow);
+                ?>
+            </div>
+            <h2>Lab_3.4</h2>
+            <div>
+                <?php
+                $leftMenu = [
+                    ['link'=>'PHP configuration info', 'href'=>'info.php'],
+                    ['link'=>'Our project', 'href'=>'php_labs_den1.php'],
+                    ['link'=>'PHP documentation', 'href'=>'https://www.php.net/docs.php'],
+                    ['link'=>'HTML documentation', 'href'=>'https://www.w3schools.com/html/html_intro.asp'],
+                    ['link'=>'CSS documentation', 'href'=>'https://www.w3schools.com/css/default.asp'],
+                    ['link'=>'Java script documentation', 'href'=>'https://www.w3schools.com/js/default.asp'],
+                ];
+                ?>
+                <?php
+                    foreach ($leftMenu as $val)
+                        echo "<a href='$val[href]' target='_blank'>$val[link]</a><br/><br/>";
+                ?>
+            </div>
+            <h1>Labs Module 4</h1>
+            <h2>Lab_4.1</h2>
             <p>
                 <?php
-                    $rows=32;
-                    $cols=32;
-                    echo "<table>";
-                    for($tr=1; $tr<=$rows; $tr++):
-                        echo "<tr>";
-                            for($td=1; $td<=$cols; $td++):
-                                if($tr==1 || $td==1)
-                                    echo "<td><strong>" . $tr*$td . "</strong></td>";
-                                else
-                                    echo "<td>" . $tr*$td . "</td>";
-                            endfor;
-                        echo "</tr>";
-                    endfor;
-                    echo "</table>";
+                    drawTable(20);
                 ?>
-            </p>
-            <h2>Lab_3.4</h2>
-            <p>
-
             </p>
         </article>
         <nav>
