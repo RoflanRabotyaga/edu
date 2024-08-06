@@ -1,5 +1,6 @@
-<!-- Lab 4.1 -->
+
 <?php
+//    <!-- Lab 4.1 -->
 function drawTable($cols="10", $rows="10", $color="white"){
     echo "<table style='background-color: $color'>";
     for($tr=1; $tr<=$rows; $tr++):
@@ -13,6 +14,16 @@ function drawTable($cols="10", $rows="10", $color="white"){
         echo "</tr>";
     endfor;
     echo "</table>";
+}
+//        <!-- Lab 4.2 -->
+function verticalmenu(array $menu, bool $vertical=true){
+    $n=count($menu);
+    for ($i=0; $i<$n; $i++){
+        if ($vertical)
+            echo "<br/><div><br/>&nbsp &nbsp $menu[$i]</div>";
+        else
+            echo "<div style='float: left'><br/>&nbsp &nbsp$menu[$i]</div> ";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -42,7 +53,7 @@ function drawTable($cols="10", $rows="10", $color="white"){
             </form>
         </div>
     </header>
-    <section>
+    <main>
         <article>
             <h1>Labs Module 3</h1>
             <h2>Lab_3.1</h2>
@@ -98,6 +109,19 @@ function drawTable($cols="10", $rows="10", $color="white"){
                     drawTable(20);
                 ?>
             </p>
+            <h2>Lab_4.2</h2>
+            <section>
+                <?php
+                    $centerMenu = [
+                    "Oh i do like to be beside the seaside",
+                    "Oh i do like to be beside the sea",
+                    "Although in the North of England",
+                    "It never stops raining"
+                    ];
+                    verticalmenu($centerMenu, false);
+                ?>
+                <iframe src="info.php"></iframe>
+            </section>
         </article>
         <nav>
             <h1>Related</h1>
@@ -109,7 +133,7 @@ function drawTable($cols="10", $rows="10", $color="white"){
                 <li><a href="http://localhost">Oh well...</a></li>
             </ul>
         </nav>
-    </section>
+    </main>
     <footer>
         <div>
             <p id="footer_p">&copy;Copyright 2050 by nobody.All rights reserved.</p>
