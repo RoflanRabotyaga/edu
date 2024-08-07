@@ -11,7 +11,7 @@
                     text-align: center;
                 }
 				body{
-					background-color: yellow;
+					background-color: #fed75e;
 				}
 				form:first-child{
 					text-align: center;
@@ -34,7 +34,7 @@
                     margin: 30px 100px 30px 50px;
                 }
                 span{
-                    color: green;
+                    color: #698f44;
                     font-weight: bold;
                 }
 			}

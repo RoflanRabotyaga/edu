@@ -82,7 +82,7 @@ function verticalmenu(array $menu, bool $vertical=true){
             <h2>Lab_3.3</h2>
             <div>
                 <?php
-                    drawTable(32, 32, yellow);
+                    drawTable(32, 32, lightgreen);
                 ?>
             </div>
             <h2>Lab_3.4</h2>

@@ -21,7 +21,7 @@ ul{
     line-height: 20px;
 }
 header{
-    background-color: yellow;
+    background-color: #fed75e;
     height: 80px;
     width: 1300px;
     margin: 5px auto;
@@ -61,7 +61,7 @@ article{
     float: left;
 }
 nav{
-    background-color: yellow;
+    background-color: #fed75e;
     height: 600px;
     width: 190px;
     float: left;
@@ -93,7 +93,7 @@ table, td{
     margin: 0 auto;
 }
 section{
-    background-color: yellow;
+    background-color: #fed75e;
     width: auto;
     height: 550px;
     position: relative;
