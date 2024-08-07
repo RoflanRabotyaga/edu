@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE HTML>
 <html lang="en">
 	<head>
-		<title>Lab 2.1 - 2.6</title>
+		<title>Labs 2.1 - 2.6</title>
 		<style>
 			@media screen{
 				h1{

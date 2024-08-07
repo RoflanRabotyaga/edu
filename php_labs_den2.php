@@ -30,7 +30,7 @@ function verticalmenu(array $menu, bool $vertical=true){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lab 3.1 - 4.2</title>
+    <title>Labs 3.1 - 4.2</title>
     <link rel="stylesheet" href="php_labs_den2.css">
 </head>
 <body>
