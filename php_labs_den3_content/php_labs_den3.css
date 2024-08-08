@@ -1,7 +1,7 @@
 /*php_labs_den3.php*/
 *{margin: 5px; padding: 0; box-sizing: border-box;}
 body{
-    background-image: url("images/background.jpg");
+    background-image: url("php_labs_den3_content/images/background.jpg");
     background-size: cover;
     background-position: -20px -5px;
     background-attachment: local;
@@ -50,4 +50,7 @@ nav > div{
     width: 90%;
     border-radius: 10px;
     margin-left: 5%;
+}
+form > input{
+
 }

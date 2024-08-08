@@ -1,6 +1,6 @@
 
 <h1 style="text-align: center">The principle of file connection</h1>
-<img src="php_labs_den3_content/images/file_connection.png" style="float: right; margin: 50px; height:400px; width: 550px">
+<img src="php_labs_den3_content/images/file_connection.png" alt="visualisation" style="float: right; margin: 50px; height: 400px; width: 550px">
 <pre>
 
 

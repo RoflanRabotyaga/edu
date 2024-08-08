@@ -1,6 +1,6 @@
 
 <h1 style="text-align: center">Error processing</h1>
-<img src="php_labs_den3_content/images/travel.webp" style="float: right; margin: 75px; height:300px; width: 450px">
+<img src="php_labs_den3_content/images/travel.webp" alt="girl on a boat on see with cliffs around" style="float: right; margin: 75px; height:300px; width: 450px">
 <pre>
 
 

@@ -3,8 +3,8 @@
 include "php_labs_den3_content/den3.lib.php";
 set_error_handler("myError");
 
-$title = 'Lab 5';
-$header = 'Lab 5';
+$title = 'Calculator';
+$header = 'Calculator';
 $id = strtolower(strip_tags(trim($_GET['id'])));
 switch($id){
     case 'lab5':
@@ -14,6 +14,10 @@ switch($id){
     case 'lab6':
         $title = 'Lab #6';
         $header = 'Lab #6';
+        break;
+    case 'final':
+        //$title = 'Calculator';
+        //$header = 'Calculator';
         break;
     case 'error':
         $title = 'Error handling';
@@ -26,7 +30,12 @@ switch($id){
 <head>
     <meta charset="UTF-8">
     <title><?php echo $title?></title>
-    <link rel="stylesheet" href="php_labs_den3_content/php_labs_den3.css">
+    <style>
+        <?php
+            include "php_labs_den3_content/php_labs_den3.css";
+         ?>
+    </style>
+    <!--<link rel="stylesheet" href="php_labs_den3_content/php_labs_den3.css">-->
 </head>
 <body>
     <?php

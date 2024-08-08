@@ -1,5 +1,5 @@
 <?php
-function verticalmenu($menu, bool $vertical=true){
+function verticalmenu($menu, bool $vertical=true):bool{
     if(!is_array($menu)){
         return false;
     }
@@ -17,11 +17,11 @@ function verticalmenu($menu, bool $vertical=true){
 $leftMenu = [
     "<a href='php_labs_den3.php?id=lab5'>Lab five</a>",
     "<a href='php_labs_den3.php?id=lab6'>Lab six</a>",
-    "<a href='php_labs_den3.php?id=error' target='content'>Error handling</a>",
+    "<a href='php_labs_den3.php?id=final'>Final task (calculator)</a>",
+    "<a href='php_labs_den3.php?id=error'>Error handling</a>",
     "Flight tickets",
     "Hotels",
-    "Restaurants  & Bars",
-    "Spa & Fitness"
+    "Restaurants  & Bars"
 ];
 if(!verticalmenu($leftMenu, true))
     trigger_error("Menu is not found", E_USER_ERROR);
