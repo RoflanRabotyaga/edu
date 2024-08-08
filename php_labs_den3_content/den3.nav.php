@@ -15,13 +15,13 @@ function verticalmenu($menu, bool $vertical=true){
 
 
 $leftMenu = [
-    "<a href='php_labs_den3_content/den3.lab5.php?id=lab5' target='content'>Lab five</a>",
-    "<a href='php_labs_den3_content/den3.lab6.php?id=lab6' target='content'>Lab six</a>",
-    "<a href='info.php?id=info' target='content'>PHP configuration</a>",
-    "<a href='php_labs_den1.php?id=den1' target='content'>Our project 1</a>",
-    "<a href='php_labs_den2.php?id=den2' target='content'>Our project 2</a>",
+    "<a href='php_labs_den3.php?id=lab5'>Lab five</a>",
+    "<a href='php_labs_den3.php?id=lab6'>Lab six</a>",
+    "<a href='php_labs_den3.php?id=error' target='content'>Error handling</a>",
+    "Flight tickets",
     "Hotels",
-    "Restaurants  & Bars"
+    "Restaurants  & Bars",
+    "Spa & Fitness"
 ];
 if(!verticalmenu($leftMenu, true))
     trigger_error("Menu is not found", E_USER_ERROR);

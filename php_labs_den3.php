@@ -3,8 +3,8 @@
 include "php_labs_den3_content/den3.lib.php";
 set_error_handler("myError");
 
-$title = 'Lab 5 - 6';
-$header = 'Lab 5 - 6';
+$title = 'Lab 5';
+$header = 'Lab 5';
 $id = strtolower(strip_tags(trim($_GET['id'])));
 switch($id){
     case 'lab5':
@@ -15,17 +15,9 @@ switch($id){
         $title = 'Lab #6';
         $header = 'Lab #6';
         break;
-    case 'info':
-        $title = 'PHP configuration info';
-        $header = 'PHP configuration info';
-        break;
-    case 'den1':
-        $title = 'Labs 2.1 - 2.6';
-        $header = 'Labs 2.1 - 2.6';
-        break;
-    case 'den2':
-        $title = 'Labs 3.1 - 4.2';
-        $header = 'Labs 3.1 - 4.2';
+    case 'error':
+        $title = 'Error handling';
+        $header = 'Error handling';
         break;
 }
 ?>
