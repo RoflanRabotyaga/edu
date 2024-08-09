@@ -16,8 +16,6 @@ switch($id){
         $header = 'Lab #6';
         break;
     case 'final':
-        //$title = 'Calculator';
-        //$header = 'Calculator';
         break;
     case 'error':
         $title = 'Error handling';
