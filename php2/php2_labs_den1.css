@@ -1,0 +1,34 @@
+*{margin: 5px; padding: 0; box-sizing: border-box;}
+h1{
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+body{
+    background-color: #ccf;
+}
+form:first-child{
+    text-align: center;
+    margin: 20px auto;
+}
+iframe{
+    border: 2px solid grey;
+}
+p{
+    margin: 20px auto;
+    width: 80%;
+}
+nav{
+    position: absolute;
+    bottom: 75%;
+    float: left;
+}
+form{
+    float: left;
+    margin: 30px 100px 30px 50px;
+}
+span{
+    color: #55a;
+    font-weight: bold;
+}
