@@ -23,6 +23,6 @@
             $change -=1;
         $coins++;
     }
-    echo "$coins";
+    echo "coins needed: $coins";
 ?>
 </body>
