@@ -1,0 +1,56 @@
+/*php_labs_den3.php*/
+*{margin: 5px; padding: 0; box-sizing: border-box;}
+body{
+    background-image: url("php_labs_den3_content/images/background.jpg");
+    background-size: cover;
+    background-position: -20px -5px;
+    background-attachment: local;
+    background-color: #fed75e;
+}
+h1{
+    text-align: center;
+    margin: 0 auto;
+}
+img{
+    margin: -40px 0 15px 4%;
+    float: left;
+    clear: both;
+    width: 200px;
+    height: 170px;
+}
+aside{
+    float: right;
+    margin: 0 5% 0 0;
+}
+nav{
+    float: left;
+    clear: both;
+    /*width: 285px;*/
+    width: 19%;
+    height: 565px;
+    background-color: #698f44;
+    border-radius: 10px;
+}
+main{
+    float: left;
+    clear: right;
+    /*width: 1100px;*/
+    width: 70%;
+    height: 565px;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-left: 8%;
+    border: 5px solid #698f44;
+}
+
+nav > div{
+    background-color: #FFF;
+    height: 50px;
+    /*width: 255px;*/
+    width: 90%;
+    border-radius: 10px;
+    margin-left: 5%;
+}
+form > input{
+
+}
