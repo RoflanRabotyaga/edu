@@ -27,7 +27,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 	<head>
-		<title>php2_lab1.1</title>
+		<title>php2_lab1.1-lab.1.3</title>
 		<link rel="stylesheet" href="php2_labs_den1_content/php2_labs_den1.css">
         <style>
             input, label{
