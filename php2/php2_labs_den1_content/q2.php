@@ -1,4 +1,4 @@
-<form method="post" style="position: absolute; width: 200px; height: 200px; overflow: auto; margin: auto; top: 0; left: 0; bottom: 0; right: 0">
+<form id="submit" method="post" style="position: absolute; width: 200px; height: 200px; overflow: auto; margin: auto; top: 0; left: 0; bottom: 0; right: 0">
     <input type='hidden' name='q' value='<?= ++$q ?>'>
     <input type='hidden' name='title' value='999 / 3 is the same as 9 * x. Find x.'>
     <input type="radio" name="answer" id="2a" value="2a"><label for="2a">a. 100 </label><br/><br/>

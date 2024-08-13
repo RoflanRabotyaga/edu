@@ -8,10 +8,7 @@ h2{
 body{
     background-color: #ccf;
 }
-form:first-child{
-    text-align: center;
-    margin: 20px auto;
-}
+
 iframe{
     border: 2px solid grey;
 }
@@ -24,10 +21,16 @@ nav{
     top: 20%;
     float: left;
 }
-form{
-    float: left;
-    margin: 30px 100px 30px 50px;
+
+#myForm > input{
+    color:#00f;border:0px #000 solid;background-color:#ccf;
 }
+
+#submit:first-child{
+    text-align: center;
+    margin: 20px auto;
+}
+
 span{
     color: #55a;
     font-weight: bold;

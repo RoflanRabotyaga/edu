@@ -59,12 +59,18 @@
             <h2><?= $title ?></h2>
 		</header>
 		<nav>
+            <!-- Menu -->
             <?php
-                $leftMenu = [
-                    'php2_labs_den1.php'
+                $leftMenuTitles = [
+                    '2 + 2 * 2 = ',
+                    'What number is exactly half-way between these two numbers: 77 and 177?',
+                    '999 / 3 is the same as 9 * x. Find x.',
+                    'x plus 99 is 9 times less than 999. What is 9 less than x ?'
                 ];
-                for($i = 0; $i < count($leftMenu); $i++)
-                    echo '<a href="' . $leftMenu[$i] . '" target="_parent"> Go to Question ' . ($i  + 1) . '</a><br/><br/>';
+                echo '<form id="myForm" method="post"><input type="hidden" name="q" value="0"><input type="submit" value="Start"></form><br/><br/>';
+                for($i = 1; $i <= 4; $i++)
+                    echo '<form id="myForm" method="post"><input type="hidden" name="q" value="' . $i . '"><input type="hidden" name="title" value="' . $leftMenuTitles[$i - 1] . '"><input type="submit" value="Question ' . $i . '"></form><br/><br/>';
+                echo '<form id="myForm" method="post"><input type="hidden" name="q" value="999999"><input type="submit" value="Result"></form><br/><br/>';
             ?>
 		</nav>
 		<main>
