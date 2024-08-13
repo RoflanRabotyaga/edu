@@ -23,12 +23,40 @@ nav{
 }
 
 #myForm > input{
-    color:#00f;border:0px #000 solid;background-color:#ccf;
+    color:#00f;
+    border:0 #000 solid;
+    background-color:#ccf;
+    display: block;
+    margin: 0 auto;
+}
+
+#myForm > input:hover{
+    color: purple;
+    cursor: pointer;
+    background-color: #dde;
 }
 
 #submit:first-child{
     text-align: center;
     margin: 20px auto;
+}
+
+#submit{
+    position: absolute;
+    width: 250px;
+    height: 150px;
+    overflow: auto;
+    margin: auto;
+    top: 25%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #99c;
+    border-radius: 5px;
+}
+
+#submit > input{
+    margin: 11px;
 }
 
 span{
