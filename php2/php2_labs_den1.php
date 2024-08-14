@@ -1,15 +1,18 @@
 ﻿<?php
+$id = strtolower(strip_tags(trim($_GET['id'])));
+if($id == null){
+    $id = 'math';
+}
 //<Lab 1.1>
     $number = 0;
-    $number = unserialize(base64_decode($_COOKIE["user"]))[number];
+    $number = unserialize(base64_decode($_COOKIE["user"]))['number'];
     $number++;
     $cookiearray = ['number' => $number, 'time' => time()];
     $cookie = base64_encode(serialize($cookiearray));
     setcookie('user', $cookie, time()+60);
 //</Lab 1.1>
 
-//Different tests
-$id = strtolower(strip_tags(trim($_GET['id'])));
+
 
 //<Lab 1.3>
     session_start();
@@ -26,6 +29,10 @@ $id = strtolower(strip_tags(trim($_GET['id'])));
         $title = $_POST['title'];
     }
 //</Lab 1.3>
+//<Lab 1.4>
+    //define(PATH_LOG, 'path.log');
+    include 'php2_labs_den1_content/log.inc.php';
+//</Lab 1.4>
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -48,10 +55,10 @@ $id = strtolower(strip_tags(trim($_GET['id'])));
                 <!-- <Lab 1.1> -->
                     <?php
                         $array = unserialize(base64_decode($_COOKIE["user"]));
-                        if($array[number] == null)
+                        if($array['number'] == null)
                             echo "Welcome!";
                         else
-                            echo "You`re here " . ($array[number] + 1) . " time, last time was: " . date('m/d/Y H:i.s', $array[time]);
+                            echo "You`re here " . ($array['number'] + 1) . " time, last time was: " . date('m/d/Y H:i.s', $array['time']);
                     ?>
                 <!-- </Lab 1.1> -->
             </h3>
@@ -122,5 +129,8 @@ $id = strtolower(strip_tags(trim($_GET['id'])));
             }
             ?>
 		</main>
+        <footer>
+            <span>Lab 1.4: </span><a href='php2_labs_den1.php?dev=log'>Visit Log</a>
+        </footer>
 	</body>
 </html>

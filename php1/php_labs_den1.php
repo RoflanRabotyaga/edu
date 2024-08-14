@@ -75,7 +75,7 @@
                 <span>Lab2.5: </span>
                 <!--Lab 2.5-->
                 <?php
-                    $size = ini_get(post_max_size);
+                    $size = ini_get('post_max_size');
                     switch ($size):
                         case preg_match("/K/", $size)==1:
                             $size *= 1000;

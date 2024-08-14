@@ -75,13 +75,16 @@ echo "</div>";
     }
 
     // generating respond
-    $error_status = user_error_check($filtered);
-    if ($error_status == 0)
-        echo "<span>Your answer is: " . calculation($filtered) . "<br/></span>";
-    elseif ($error_status >= 1 && $error_status <= 4)
-        echo "<em style='color: red'> Error: $user_error_messages[$error_status] </em>";
-    else
-        echo "<em style='color: red'> Warning: Unknown error occurred </em>";
+    if(isset($filtered)) {
+        $error_status = user_error_check($filtered);
+
+        if ($error_status == 0)
+            echo "<span>Your answer is: " . calculation($filtered) . "<br/></span>";
+        elseif ($error_status >= 1 && $error_status <= 4)
+            echo "<em style='color: red'> Error: $user_error_messages[$error_status] </em>";
+        else
+            echo "<em style='color: red'> Warning: Unknown error occurred </em>";
+    }
 ?>
 
 <?php echo "</div>" ?>
