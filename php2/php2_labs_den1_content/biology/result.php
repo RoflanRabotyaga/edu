@@ -2,7 +2,7 @@
 $result = 0; // Переменная для суммы ответов
 if(isset($_SESSION['test'])){
 // Зачитываем ответы из ini-файла в массив
-    $answers = parse_ini_file("php2_labs_den1_content/answers.ini");
+    $answers = parse_ini_file("php2_labs_den1_content/$id/answers.ini");
 // Проходим по ответам и смотрим, есть ли среди них правильные
 foreach($_SESSION['test'] as $value){
     if(array_key_exists($value, $answers))
@@ -12,5 +12,5 @@ foreach($_SESSION['test'] as $value){
 // Очищаем данные сессии
 session_destroy();
 }
-echo "<h2>Your result: $result / 4</h2>";
+echo '<h2>Your result: ' . $result . '/' . count($leftMenuTitles[$id]) . '</h2>';
 ?>
