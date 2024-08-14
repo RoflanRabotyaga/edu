@@ -1,7 +1,10 @@
 <?php
     $dt = time();
-    $page = $_SERVER['REQUEST_URI'];
+    $page = $_SERVER['QUERY_STRING'];
     $ref = $_SERVER['HTTP_REFERER'];
-    $path = date('m/d/Y H:i.s', $dt) . "| $page >>> $ref\n";
-    file_put_contents("path.log", $path, FILE_APPEND);
+    $ref = pathinfo($ref, PATHINFO_EXTENSION);
+    $path = date('m/d/Y H:i.s', $dt) . "|&nbsp&nbsp&nbsp $page >>>>> $ref\n";
+
+    $path .= file_get_contents('php2_labs_den1_content/logs/path.log');
+    file_put_contents('php2_labs_den1_content/logs/path.log', $path);
 ?>

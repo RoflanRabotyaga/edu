@@ -1,5 +1,6 @@
 ﻿<?php
 $id = strtolower(strip_tags(trim($_GET['id'])));
+$log = strtolower(strip_tags(trim($_GET['log'])));
 if($id == null){
     $id = 'math';
 }
@@ -19,7 +20,6 @@ if($id == null){
     if (!isset($_SESSION['test']) and !isset($_POST['q'])){
         // Если первый запуск теста, то инициализируем переменные
         $q = 0; // Номер текущего вопроса
-        $title = 'Start the test';
     }
     else{
         // Создаем сессионную переменную test, содержащую массив ответов
@@ -30,7 +30,6 @@ if($id == null){
     }
 //</Lab 1.3>
 //<Lab 1.4>
-    //define(PATH_LOG, 'path.log');
     include 'php2_labs_den1_content/log.inc.php';
 //</Lab 1.4>
 ?>
@@ -69,7 +68,12 @@ if($id == null){
             <a href='php2_labs_den1.php?id=biology'>Biology</a>
         </nav>
 		<header>
-            <h1><span>Lab 1.3</span> <?= $id ?> test</h1>
+            <?php
+            if($log == null)
+                echo "<h1><span>Lab 1.3</span> $id test</h1>";
+            else
+                echo "<h1><span>Lab 1.4</span> $log log </h1>";
+            ?>
             <br/>
             <h2><?= $title ?></h2>
 		</header>
@@ -86,51 +90,59 @@ if($id == null){
                         '5. Many animals protect themselves with an exoskeleton. Which of the following is an example of an animal with an exoskeleton?',
                         '6. Which organ system is responsible for producing hormones that regulate various body functions?']
                 ];
-                echo '<form id="myForm" method="post"><input type="hidden" name="q" value="0"><input type="submit" value="Start"></form><br/><br/>';
-                for($i = 1; $i <= count($leftMenuTitles[$id]); $i++)
-                    echo '<form id="myForm" method="post"><input type="hidden" name="q" value="' . $i . '"><input type="hidden" name="title" value="' . $leftMenuTitles[$id][$i - 1] . '"><input type="submit" value="Question ' . $i . '"></form><br/><br/>';
-                echo '<form id="myForm" method="post"><input type="hidden" name="q" value="999999"><input type="submit" value="Result"></form><br/><br/>';
+                if($log == null) {
+                    echo '<form id="myForm" method="post"><input type="hidden" name="q" value="0"><input type="submit" value="Start"></form><br/><br/>';
+                    for ($i = 1; $i <= count($leftMenuTitles[$id]); $i++)
+                        echo '<form id="myForm" method="post"><input type="hidden" name="q" value="' . $i . '"><input type="hidden" name="title" value="' . $leftMenuTitles[$id][$i - 1] . '"><input type="submit" value="Question ' . $i . '"></form><br/><br/>';
+                    echo '<form id="myForm" method="post"><input type="hidden" name="q" value="999999"><input type="submit" value="Result"></form><br/><br/>';
+                }
             ?>
 		</aside>
 		<main>
             <?php
             // В зависимости от номера вопроса,
             // подключаем соответствующий файл с вопросами
-            switch($q){
-                case 0:
-                    include 'php2_labs_den1_content/' . $id . '/start.php';
-                    break;
-                case 1:
-                    include 'php2_labs_den1_content/' . $id . '/q1.php';
-                    break;
-                case 2:
-                    include 'php2_labs_den1_content/' . $id . '/q2.php';
-                    break;
-                case 3:
-                    include 'php2_labs_den1_content/' . $id . '/q3.php';
-                    break;
-                case 4:
-                    if(file_exists("php2_labs_den1_content/$id/q4.php")) {
-                        include 'php2_labs_den1_content/' . $id . '/q4.php';
+            if($log == null){
+                switch($q){
+                    case 0:
+                        include 'php2_labs_den1_content/' . $id . '/start.php';
                         break;
-                    }
-                case 5:
-                    if(file_exists("php2_labs_den1_content/$id/q5.php")) {
-                        include 'php2_labs_den1_content/' . $id . '/q5.php';
+                    case 1:
+                        include 'php2_labs_den1_content/' . $id . '/q1.php';
                         break;
-                    }
-                case 6:
-                    if(file_exists("php2_labs_den1_content/$id/q6.php")) {
-                        include 'php2_labs_den1_content/' . $id . '/q6.php';
+                    case 2:
+                        include 'php2_labs_den1_content/' . $id . '/q2.php';
                         break;
-                    }
-                default:
-                    include 'php2_labs_den1_content/' . $id . '/result.php';
-            }
+                    case 3:
+                        include 'php2_labs_den1_content/' . $id . '/q3.php';
+                        break;
+                    case 4:
+                        if(file_exists("php2_labs_den1_content/$id/q4.php")) {
+                            include 'php2_labs_den1_content/' . $id . '/q4.php';
+                            break;
+                        }
+                    case 5:
+                        if(file_exists("php2_labs_den1_content/$id/q5.php")) {
+                            include 'php2_labs_den1_content/' . $id . '/q5.php';
+                            break;
+                        }
+                    case 6:
+                        if(file_exists("php2_labs_den1_content/$id/q6.php")) {
+                            include 'php2_labs_den1_content/' . $id . '/q6.php';
+                            break;
+                        }
+                    default:
+                        include 'php2_labs_den1_content/' . $id . '/result.php';
+                }
+            }else
+                include 'php2_labs_den1_content/view-log.inc.php'
             ?>
 		</main>
         <footer>
-            <span>Lab 1.4: </span><a href='php2_labs_den1.php?dev=log'>Visit Log</a>
+            <?php
+            if($log == null)
+                echo "<span>Lab 1.4: </span><a href='php2_labs_den1.php?log=path'>Visit Log</a>"
+            ?>
         </footer>
 	</body>
 </html>
