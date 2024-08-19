@@ -25,35 +25,42 @@
         const DB_NAME = 'gbook';
 
         $link = mysqli_connect(DB_HOST, DB_LOGIN, DB_PASSWORD, DB_NAME);
-        if( !$link )
+        if( !$link ) {
             echo 'Error: ' . mysqli_connect_error();
+            exit;
+        }
 
         //Task 3
 
         $name = strip_tags(trim($_POST['name']));
         $email = strip_tags(trim($_POST['email']));
-        $msg = strip_tags(trim($_POST['msg']));
+        $msg = nl2br(strip_tags(trim($_POST['msg'])));
         $time = strip_tags(trim(date('m/d/Y H:i.s', $_POST['time'])));
 
         if (strlen($name) != 0 && strlen($msg) != 0) {
             $name = mysqli_real_escape_string($link, $name);
             $email = mysqli_real_escape_string($link, $email);
-            $msg = mysqli_real_escape_string($link, $msg);
+            $msg = "<br/>" . mysqli_real_escape_string($link, $msg) . "<br/>";
             $time = mysqli_real_escape_string($link, $time);
 
             $query = "INSERT INTO msgs (time, name, email, msg) VALUES ('$time', '$name', '$email', '$msg')";
             $insert_result = mysqli_query($link, $query);
-                if(!$insert_result)
-                  echo DEV_ERROR;
-        }
+                if(!$insert_result) {
+                    echo DEV_ERROR;
+                    exit;
+                }
+        }else
+            echo "Name and message is required";
 
         //Task 5
         if(isset($_GET['del'])){
-            $del = strip_tags(trim($_GET['del']));
+            $del = abs((int)strip_tags(trim($_GET['del'])));
             $query = "DELETE FROM msgs WHERE id = $del";
             $del_result = mysqli_query($link, $query);
-                if(!$del_result)
+                if(!$del_result) {
                     echo DEV_ERROR;
+                    exit;
+                }
         }
 
         //Task 4
@@ -65,12 +72,13 @@
         echo '<p>Total number of notes:' . count($data_array) . '</p>';
         foreach ($data_array as $row) {
             foreach ($row as $column)
-                echo $column . "&nbsp&nbsp";
-            echo '<a href="php2_den2_guestbook.php?del=' . $row['id'] . '">Delete</a>';
+                if($column == $row['id'])
+                    echo "";
+                else
+                    echo $column . "&nbsp&nbsp";
+            echo '<a href="php2_den2_guestbook.php?del=' . $row['id'] . '">Delete</a><br/>';
             echo "<br/>";
         }
     ?>
-
-
 </body>
 </html>
