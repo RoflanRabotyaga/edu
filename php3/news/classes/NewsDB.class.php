@@ -70,9 +70,12 @@ class NewsDB implements INewsDB{
             ORDER BY msgs.id DESC";
         $result = $this->_db->query($sql);
         //$row = $result->fetchArray(SQLITE3_ASSOC);
+        return $this->db2Arr($result);
+    }
+    function db2Arr($result){
         $i=0;
         $array[0] = "No result";
-        while (($row = $result->fetchArray(SQLITE3_ASSOC)) !== FALSE) {
+        while (($row = $result->fetchArray(SQLITE3_ASSOC))/* !== FALSE*/) {
             $array[$i] = $row;
             $i++;
         }
