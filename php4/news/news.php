@@ -13,33 +13,34 @@ if(isset($_GET['del']) && is_numeric($_GET['del'])){
 
 <html>
 <head>
-	<title>Новостная лента</title>
+	<title>News</title>
 	<meta charset="utf-8" />
 </head>
 <body>
 
-<h1>Последние новости</h1>
+<h1>Last news</h1>
 <?php
 if($errMsg)
   echo $errMsg;
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-Заголовок новости:<br />
+Title:<br />
 <input type="text" name="title" /><br />
-Выберите категорию:<br />
+Category:<br />
 <select name="category">
-<option value="1">Политика</option>
-<option value="2">Культура</option>
-<option value="3">Спорт</option>
+    <?php
+        foreach ($news as $value => $name)
+            echo '<option value="' . $value . '">' . $name . '</option>';
+    ?>
 </select>
 <br />
-Текст новости:<br />
+Paragraph:<br />
 <textarea name="description" cols="50" rows="5"></textarea><br />
-Источник:<br />
+Source:<br />
 <input type="text" name="source" /><br />
 <br />
-<input type="submit" value="Добавить!" />
+<input type="submit" value="Add" />
 
 </form>
 

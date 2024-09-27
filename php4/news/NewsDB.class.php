@@ -1,6 +1,7 @@
 <?php
 include "INewsDB.class.php";
-class NewsDB implements INewsDB{
+class NewsDB implements INewsDB , IteratorAggregate{
+  private $items = [];
   const DB_NAME = 'news.db';
   protected $_db;
   function __construct(){
@@ -28,6 +29,7 @@ class NewsDB implements INewsDB{
                   UNION SELECT 3 as id, 'Спорт' as name";
       $this->_db->exec($sql) or $this->_db->lastErrorMsg();	
     }
+    $this->getCategories();
   }
   function __destruct(){
     unset($this->_db);
@@ -60,7 +62,25 @@ class NewsDB implements INewsDB{
     }catch(Exception $e){
       return false;
     }
-  }	
+  }
+  private function getCategories()
+  {
+    try{
+      $sql = "SELECT id, name FROM category";
+      $result = $this->_db->query($sql);
+      $result = $this->db2Arr($result);
+      foreach ($result as $category)
+        $this->items[$category['id']] = $category['name'];
+      if (!is_object($result))
+        throw new Exception($this->_db->lastErrorMsg());
+    }catch(Exception $e){
+      return false;
+    }
+
+  }
+  function getIterator(){
+    return new ArrayIterator($this->items);
+  }
   public function deleteNews($id){
     try{
       $sql = "DELETE FROM msgs WHERE id = $id";

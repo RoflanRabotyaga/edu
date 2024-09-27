@@ -9,7 +9,7 @@ if($result === false){
     $category = $item['category'];
     $description = nl2br($item['description']);
     $datetime = date("d-m-Y H:i:s",$item['datetime']);
-
+    $source = $item['source'];
     echo <<<LABEL
     <hr>
     <p>
@@ -17,7 +17,7 @@ if($result === false){
         <br />$description
     </p>
     <p align="right">
-        <a href="{$_SERVER['PHP_SELF']}?del=$id">Удалить</a>
+        <a href="{$_SERVER['PHP_SELF']}?del=$id">Delete</a>
     </p>
 LABEL;
   }
