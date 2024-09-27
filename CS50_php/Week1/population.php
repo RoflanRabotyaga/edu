@@ -18,22 +18,25 @@
         "Ending point is less than starting, we want lamas to grow!"
     ];
 
-    foreach($_POST as $key => $val) {
-        $filtered[$key] = strip_tags(trim($val));
-    }
-    if(strlen($filtered[start]) == 0 || strlen($filtered[end]) == 0)
-        echo "$user_error_messages[0]";
-    elseif($filtered[start] < 9)
-        echo "$user_error_messages[1]";
-    elseif($filtered[end] < $filtered[start])
-        echo "$user_error_messages[2]";
-    else
-        $lamas = $filtered[start];
-        for($year = 0; $lamas < $filtered[end]; $year++){
-            $born = $lamas / 3;
-            $dead = $lamas / 4;
-            $lamas += $born - $dead;
+    if ($_POST) {
+        foreach ($_POST as $key => $val) {
+            $filtered[$key] = strip_tags(trim($val));
         }
-        echo "The end point will be reached in $year years <br/>"
+        if (strlen($filtered['start']) == 0 || strlen($filtered['end']) == 0)
+            echo "$user_error_messages[0]";
+        elseif ($filtered['start'] < 9)
+            echo "$user_error_messages[1]";
+        elseif ($filtered['end'] < $filtered['start'])
+            echo "$user_error_messages[2]";
+        else {
+            $lamas = $filtered['start'];
+            for ($year = 0; $lamas < $filtered['end']; $year++) {
+                $born = $lamas / 3;
+                $dead = $lamas / 4;
+                $lamas += $born - $dead;
+            }
+            echo "The end point will be reached in $year years <br/>";
+        }
+    }
 ?>
 </body>

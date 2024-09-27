@@ -65,9 +65,11 @@ function card_bank($n):string{
 </form><br/>
 
 <?php
-$n = htmlentities($_GET['var']);
-    if(checksum($n) % 10 != 0)
+if($_GET) {
+    $n = htmlentities($_GET['var']);
+    if (checksum($n) % 10 != 0)
         echo "INVALID<br/>";
-    elseif(card_bank($n) )
+    elseif (card_bank($n))
         echo card_bank($n) . "<br/>";
+}
 ?>

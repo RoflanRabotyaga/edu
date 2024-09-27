@@ -10,8 +10,10 @@
     <br/><input type="number" name="var" id="val1"><br/>
 </form><br/>
 <?php
-
-    $n = htmlentities($_GET['var']);
+    if($_GET)
+        $n = htmlentities($_GET['var']);
+    else
+        $n = false;
 
     $g = 1;
     $c = ($n - 1);

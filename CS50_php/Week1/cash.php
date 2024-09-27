@@ -10,7 +10,10 @@
     <br/><input type="number" name="var" id="val1"><br/>
 </form><br/>
 <?php
-    $change = htmlentities($_GET['var']);
+    if($_GET)
+        $change = htmlentities($_GET['var']);
+    else
+        $change = false;
     $coins = 0;
     while($change > 0){
         if($change >= 25)
