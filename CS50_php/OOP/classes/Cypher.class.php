@@ -2,30 +2,38 @@
 class Cypher{
     private $text;
     private $key;
+    private $encryption = true;
+    private $cypherType;
     public $result = '';
-    function __construct($text, $key, $prompt){
+    function __construct($text, $key, $query, $cypher){
         try{
-            $this->key = $key % 26;
             $this->text = $text;
-            if ($prompt == 'encrypt')
-                $this->translate(true);
-            elseif ($prompt == 'decrypt')
-                $this->translate(false);
+            $this->key = $key;
+            $this->cypherType = $cypher;
+            if($query == 'encrypt')
+                $this->encryption = true;
+            elseif($query == 'decrypt')
+                $this->encryption = false;
             else
-                throw new Exception('Unexpected prompt');
-        }catch (Exception $e){
+                throw new Exception('Unexpected query, only "encrypt" or "decrypt" supported');
+            switch($this->cypherType){
+                case 'caesar' : $this->caesarCypher(); break;
+                case 'substitution' : $this->substitutionCypher(); break;
+                default : throw new Exception('Unexpected cypher type');
+            }
+        }catch(Exception $e){
             $this->result = 'Error: ' . $e->getMessage() . "<br/>";
         }
     }
 
-    private function translate(bool $enc){
+    private function caesarCypher(){
         $letters = str_split($this->text);
         foreach($letters as &$letter){
             if(IntlChar::isalpha($letter)){
                 $ascii_divider = 122;
                 if(IntlChar::isupper($letter))
                     $ascii_divider = 90;
-                if($enc)
+                if($this->encryption)
                     if ((ord($letter) + $this->key) > $ascii_divider)
                         $letter = chr(((ord($letter) + $this->key) % $ascii_divider) + $ascii_divider - 26);
                     else
@@ -38,5 +46,8 @@ class Cypher{
             }
         }
         $this->result = implode($letters);
+    }
+    private function substitutionCypher(){
+
     }
 }
