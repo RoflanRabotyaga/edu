@@ -72,14 +72,15 @@ class NewsDB implements INewsDB , IteratorAggregate{
       foreach ($result as $category)
         $this->items[$category['id']] = $category['name'];
       if (!is_object($result))
-        throw new Exception($this->_db->lastErrorMsg());
+        if($this->_db->lastErrorMsg() != 'not an error')
+          throw new Exception($this->_db->lastErrorMsg());
     }catch(Exception $e){
-      return false;
+        echo 'Error: ' . $e->getMessage() . "<br/>";
     }
-
   }
   function getIterator(){
-    return new ArrayIterator($this->items);
+    $it = new ArrayIterator($this->items);
+    return $it;
   }
   public function deleteNews($id){
     try{
@@ -94,6 +95,6 @@ class NewsDB implements INewsDB , IteratorAggregate{
     }
   }
   function clearData($data){
-      return $this->_db->escapeString($data); 
+    return $this->_db->escapeString($data);
   }	
 }

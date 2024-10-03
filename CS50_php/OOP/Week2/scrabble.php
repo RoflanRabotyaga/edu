@@ -6,7 +6,7 @@
 </head>
 <body>
 <label>Scrabble winner calculation</label>
-<form action="scrabble.php" method="post">
+<form action="" method="post">
     <br/><input type="text" name="player1" placeholder="Player 1"><br/>
     <input type="text" name="player2" placeholder="Player 2"><br/>
     <input type="submit" value="Calculate"><br/><br/>
