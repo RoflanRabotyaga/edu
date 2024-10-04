@@ -1,39 +1,48 @@
 <?php
-class Cypher{
+class Cypher
+{
     private $text;
     private $key;
     private $encryption = true;
     private $cypherType;
     public $result = '';
-    function __construct($text, $key, $query, $cypher){
-        try{
+
+    function __construct($text, $key, $query, $cypher)
+    {
+        try {
             $this->text = $text;
             $this->key = $key;
             $this->cypherType = $cypher;
-            if($query == 'encrypt')
+            if ($query == 'encrypt')
                 $this->encryption = true;
-            elseif($query == 'decrypt')
+            elseif ($query == 'decrypt')
                 $this->encryption = false;
             else
                 throw new Exception('Unexpected query, only "encrypt" or "decrypt" supported');
-            switch($this->cypherType){
-                case 'caesar' : $this->caesarCypher(); break;
-                case 'substitution' : $this->substitutionCypher(); break;
-                default : throw new Exception('Unexpected cypher type');
+            switch ($this->cypherType) {
+                case 'caesar' :
+                    $this->caesarCypher();
+                    break;
+                case 'substitution' :
+                    $this->substitutionCypher();
+                    break;
+                default :
+                    throw new Exception('Unexpected cypher type');
             }
-        }catch(Exception $e){
+        } catch (Exception $e) {
             $this->result = 'Error: ' . $e->getMessage() . "<br/>";
         }
     }
 
-    private function caesarCypher(){
+    private function caesarCypher()
+    {
         $letters = str_split($this->text);
-        foreach($letters as &$letter){
-            if(IntlChar::isalpha($letter)){
+        foreach ($letters as &$letter) {
+            if (IntlChar::isalpha($letter)) {
                 $ascii_divider = 122;
-                if(IntlChar::isupper($letter))
+                if (IntlChar::isupper($letter))
                     $ascii_divider = 90;
-                if($this->encryption)
+                if ($this->encryption)
                     if ((ord($letter) + $this->key) > $ascii_divider)
                         $letter = chr(((ord($letter) + $this->key) % $ascii_divider) + $ascii_divider - 26);
                     else
@@ -47,7 +56,48 @@ class Cypher{
         }
         $this->result = implode($letters);
     }
-    private function substitutionCypher(){
 
+    private function substitutionCypher()
+    {
+        try {
+            $key_letters = str_split($this->key);
+            if ($this->substitutionWrongKey($key_letters))
+                throw new Exception($this->substitutionWrongKey($key_letters));
+            $letters = str_split($this->text);
+            foreach ($letters as &$letter) {
+                if (IntlChar::isalpha($letter)) {
+                    $ascii_divider = 122;
+                    if (IntlChar::isupper($letter))
+                        $ascii_divider = 90;
+                    if ($this->encryption) {
+
+                    } else {
+
+                    }
+                }
+            }
+            $this->result = implode($letters);
+        } catch (Exception $e) {
+            $this->result = 'Error: ' . $e->getMessage() . "<br/>";
+        }
+
+    }
+
+    private function substitutionWrongKey($key){
+        if (count($key) != 26)
+            return 'Key must contain 26 characters';
+        $n = 0;
+        foreach ($key as $key_letter) {
+            if (!IntlChar::isalpha($key_letter))
+                return 'Key must only contain alphabetical characters';
+            foreach ($key as $value) {
+                if ($key_letter == $value)
+                    $n++;
+            }
+            if ($n > 1)
+                return 'Key must not contain repeated characters';
+            $n = 0;
+        }
+        return false;
     }
 }
