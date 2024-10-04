@@ -16,6 +16,12 @@ if(isset($_GET['del']) && is_numeric($_GET['del'])){
 	<title>News</title>
 	<meta charset="utf-8" />
 </head>
+<script>
+    // Stop the form resubmission on page refresh
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 <body>
 
 <h1>Last news</h1>
