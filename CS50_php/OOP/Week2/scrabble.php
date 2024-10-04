@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Population</title>
+    <title>Scrabble</title>
 </head>
 <body>
 <label>Scrabble winner calculation</label>
@@ -22,3 +22,4 @@ if($_POST) {
 }
 ?>
 </body>
+</html>
