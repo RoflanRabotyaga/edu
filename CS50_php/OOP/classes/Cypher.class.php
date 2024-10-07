@@ -80,7 +80,6 @@ class Cypher
         } catch (Exception $e) {
             $this->result = 'Error: ' . $e->getMessage() . "<br/>";
         }
-
     }
 
     private function substitutionWrongKey($key){
