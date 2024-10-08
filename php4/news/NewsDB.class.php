@@ -5,13 +5,15 @@ class NewsDB implements INewsDB , IteratorAggregate{
   const DB_NAME = 'news.db';
   protected $_db;
   function __construct(){
-    if(is_file(self::DB_NAME)){
+    if(is_file(self::DB_NAME) || empty(self::DB_NAME)){
       $this->_db = new PDO('sqlite:' . self::DB_NAME);
       $this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }else{
-      $this->_db = new PDO('sqlite:' . self::DB_NAME);
-      $this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $sql = "CREATE TABLE msgs(
+      try {
+          $this->_db = new PDO('sqlite:' . self::DB_NAME);
+          $this->_db->beginTransaction();
+          $this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          $sql = "CREATE TABLE msgs(
                               id INTEGER PRIMARY KEY AUTOINCREMENT,
                               title TEXT,
                               category INTEGER,
@@ -19,17 +21,22 @@ class NewsDB implements INewsDB , IteratorAggregate{
                               source TEXT,
                               datetime INTEGER
                           )";
-      $this->_db->exec($sql) or $this->_db->errorCode();
-      $sql = "CREATE TABLE category(
+          $this->_db->exec($sql) or $this->_db->errorCode();
+          $sql = "CREATE TABLE category(
                                   id INTEGER PRIMARY KEY AUTOINCREMENT,
                                   name TEXT
                               )";
-      $this->_db->exec($sql) or $this->_db->errorCode();
-      $sql = "INSERT INTO category(id, name)
+          $this->_db->exec($sql) or $this->_db->errorCode();
+          $sql = "INSERT INTO category(id, name)
                   SELECT 1 as id, 'Политика' as name
                   UNION SELECT 2 as id, 'Культура' as name
                   UNION SELECT 3 as id, 'Спорт' as name";
-      $this->_db->exec($sql) or $this->_db->errorCode();
+          $this->_db->exec($sql) or $this->_db->errorCode();
+          $this->_db->commit();
+      }catch (PDOException $e){
+          echo "Unable to create database";
+          $this->_db->rollBack();
+      }
     }
     $this->getCategories();
   }
@@ -75,7 +82,8 @@ class NewsDB implements INewsDB , IteratorAggregate{
         if($this->_db->errorCode() != 'not an error')
           throw new Exception($this->_db->errorCode());
     }catch(Exception $e){
-        echo 'Error: ' . $e->getMessage() . "<br/>";
+        if($e->getMessage() != 00000)
+            echo 'Error: ' . $e->getMessage() . "<br/>";
     }
   }
   function getIterator(){
