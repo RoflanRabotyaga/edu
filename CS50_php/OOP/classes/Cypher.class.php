@@ -60,19 +60,21 @@ class Cypher
     private function substitutionCypher()
     {
         try {
-            $key_letters = str_split($this->key);
+            $key_letters = str_split(strtolower($this->key));
             if ($this->substitutionWrongKey($key_letters))
                 throw new Exception($this->substitutionWrongKey($key_letters));
             $letters = str_split($this->text);
             foreach ($letters as &$letter) {
                 if (IntlChar::isalpha($letter)) {
-                    $ascii_divider = 122;
+                    $ascii_start = 96;
                     if (IntlChar::isupper($letter))
-                        $ascii_divider = 90;
+                        $ascii_start = 64;
                     if ($this->encryption) {
-
+                        $letter = chr(ord($key_letters[ord($letter) - ($ascii_start) - 1]) - 96 + ($ascii_start)) ;
                     } else {
-
+                        foreach ($key_letters as $key => $value)
+                            if(chr(96 + (ord($letter) - $ascii_start)) == $value)
+                                $letter = chr($ascii_start + $key + 1);
                     }
                 }
             }
