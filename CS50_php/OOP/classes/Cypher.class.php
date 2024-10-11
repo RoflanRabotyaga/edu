@@ -48,7 +48,7 @@ class Cypher
                     else
                         $letter = chr((ord($letter) + $this->key));
                 else
-                    if ((ord($letter) - $this->key) < $ascii_divider - 26)
+                    if ((ord($letter) - $this->key) < $ascii_divider - 25)
                         $letter = chr((ord($letter) - $this->key) + 26);
                     else
                         $letter = chr((ord($letter) - $this->key));
@@ -72,9 +72,12 @@ class Cypher
                     if ($this->encryption) {
                         $letter = chr(ord($key_letters[ord($letter) - ($ascii_start) - 1]) - 96 + ($ascii_start)) ;
                     } else {
-                        foreach ($key_letters as $key => $value)
-                            if(chr(96 + (ord($letter) - $ascii_start)) == $value)
-                                $letter = chr($ascii_start + $key + 1);
+                        for($i = 0; $i < 26; $i++){
+                            if(96 + (ord($letter) - $ascii_start) == ord($key_letters[$i])) {
+                                $letter = chr($ascii_start + $i + 1);
+                                $i = 9999999;
+                            }
+                        }
                     }
                 }
             }
