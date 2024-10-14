@@ -1,11 +1,11 @@
 <?php 
-  include_once 'classes/Favorites.class.php'; 
+  include_once 'classes/Favorites.class.php';
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Наши рекомендации</title>
+  <title>We recommend</title>
   <meta charset="utf-8" />
   <style>
     header {
@@ -26,24 +26,42 @@
 
 <body>
   <header>
-    <h1>Мы рекомендуем</h1>
+    <h1>We recommend</h1>
   </header>
+  <?php
+    $fav = new Favorites();
+  ?>
   <div id='a'>
-    <h2>Полезные сайты</h2>
+    <h2>Useful sites</h2>
     <ul>
-      <? /* Список сайтов */ ?>
+      <?php
+      foreach($fav->getFavorites('getLinksItems') as $name){
+          foreach ($name as $site)
+              echo '<li><a href="' . $site[1] . '">' . $site[0] . '</a></li>';
+      }
+      ?>
     </ul>
   </div>
   <div id='b'>
-    <h2>Полезные приложения</h2>
+    <h2>Useful apps</h2>
     <ul>
-      <? /* Список приложений */ ?>
+      <?php
+      foreach($fav->getFavorites('getAppsItems') as $name){
+          foreach ($name as $app)
+              echo '<li><a href="' . $app[1] . '">' . $app[0] . '</a></li>';
+      }
+      ?>
     </ul>
   </div>
   <div id='c'>
-    <h2>Полезные статьи</h2>
+    <h2>Useful articles</h2>
     <ul>
-      <? /* Список статей */ ?>
+      <?php
+      foreach($fav->getFavorites('getArticlesItems') as $name){
+          foreach ($name as $article)
+              echo '<li><a href="' . $article[1] . '">' . $article[0] . '</a></li>';
+      }
+      ?>
     </ul>
   </div>
 </body>

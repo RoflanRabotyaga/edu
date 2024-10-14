@@ -1,4 +1,4 @@
-<?
+<?php
 require_once 'classes/IPlugin.class.php';
 class PetinPlugin implements IPlugin{
   
