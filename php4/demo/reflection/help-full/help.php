@@ -65,7 +65,7 @@ header("Content-Type: text/html;charset=utf-8");
           echo "<h3>$type</h3>";
           foreach($arr as $key => $value){  
             echo "<p><span class=\"keyword\">".
-              $d->getModifiers($value). "</span> ".
+              $d->getModifierss($value). "</span> ".
               "<span class=\"name\">$key</span>\n";
             //Добавляем параметры используя метод из ReflectionMethod
             $params = $value->getParameters();
@@ -95,7 +95,7 @@ header("Content-Type: text/html;charset=utf-8");
           echo "<h3>$type</h3>\n";
           foreach($arr as $key => $value){  
             $strtemp = "<p><span class=\"keyword\">".
-              $d->getModifiers($value) . "</span> ".
+              $d->getModifierss($value) . "</span> ".
               "<span class=\"name\">$key</span>";
             if ( isset($arrdefaultvalue[$key]) ){
               $val = $arrdefaultvalue[$key];

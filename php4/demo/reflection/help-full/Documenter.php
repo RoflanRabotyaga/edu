@@ -90,7 +90,7 @@ class Documenter extends ReflectionClass{
 Выборка модификаторов методов и свойств 
 */
 ///////////////////////////////////////////////////////////////////  
-  public function getModifiers($r){
+  public function getModifierss($r){
     if ($r instanceof ReflectionMethod ||
           $r instanceof ReflectionProperty){
       $arr = Reflection::getModifierNames($r->getModifiers());
